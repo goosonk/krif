@@ -14,22 +14,22 @@
 </head>
 <body class="bg-[#FFFDFB] locked relative text-gray-800 handwriting min-h-screen overflow-x-hidden">
 
-  <!-- EFEK BACKGROUND BUNGA MELAYANG (Balik ke versi emoji yang hidup lagi) -->
-  <div class="floating-flower" style="left: 10%; color: #FFB6C1; animation-duration: 10s; animation-delay: 0s;">🌸</div>
-  <div class="floating-flower" style="left: 28%; color: #FFC0CB; animation-duration: 12s; animation-delay: 3s; font-size: 1.2rem;">💮</div>
-  <div class="floating-flower" style="left: 50%; color: #FFC0CB; animation-duration: 11s; animation-delay: 1.5s;">🌺</div>
+  <!-- EFEK BACKGROUND BUNGA MELAYANG -->
+  <div class="floating-flower" style="left: 12%; color: #FFB6C1; animation-duration: 10s; animation-delay: 0s;">🌸</div>
+  <div class="floating-flower" style="left: 32%; color: #FFC0CB; animation-duration: 12s; animation-delay: 3s; font-size: 1.2rem;">💮</div>
+  <div class="floating-flower" style="left: 52%; color: #FFC0CB; animation-duration: 11s; animation-delay: 1.5s;">🌺</div>
   <div class="floating-flower" style="left: 72%; color: #FFB6C1; animation-duration: 13s; animation-delay: 4.5s; font-size: 1.3rem;">🌸</div>
   <div class="floating-flower" style="left: 88%; color: #FFC0CB; animation-duration: 14s; animation-delay: 2s; font-size: 1.1rem;">💮</div>
-  <div class="floating-flower" style="left: 20%; color: #FFB6C1; animation-duration: 15s; animation-delay: 6s; font-size: 1rem;">🌸</div>
+  <div class="floating-flower" style="left: 22%; color: #FFB6C1; animation-duration: 15s; animation-delay: 6s; font-size: 1rem;">🌸</div>
 
   <!-- BAGIAN 1: LAYAR AMPLOP -->
   <div id="envelope-screen" class="fixed inset-0 w-screen h-screen z-50 flex flex-col items-center justify-center bg-[#FFFDFB] overflow-hidden">
-    <div id="envelope" class="relative w-64 sm:w-72 h-44 sm:h-48 bg-pink-300 rounded-md shadow-xl cursor-pointer transform transition-transform duration-500 hover:scale-105">
-      <div id="envelope-flap" class="absolute top-0 left-0 w-0 h-0 border-l-[128px] sm:border-l-[144px] border-r-[128px] sm:border-r-[144px] border-t-[88px] sm:border-t-[96px] border-transparent border-t-pink-400 origin-top transition-transform duration-700 z-20"></div>
-      <div class="absolute bottom-0 left-0 w-0 h-0 border-l-[128px] sm:border-l-[144px] border-r-[128px] sm:border-r-[144px] border-b-[88px] sm:border-b-[96px] border-transparent border-b-pink-400 z-10"></div>
-      <div id="wax-seal" class="absolute top-[75px] sm:top-[85px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 bg-yellow-400 rounded-full shadow-lg z-30 flex items-center justify-center text-xl">🎀</div>
+    <div id="envelope" class="relative w-72 h-48 bg-pink-300 rounded-md shadow-xl cursor-pointer transform transition-transform duration-500 hover:scale-105">
+      <div id="envelope-flap" class="absolute top-0 left-0 w-0 h-0 border-l-[144px] border-r-[144px] border-t-[96px] border-transparent border-t-pink-400 origin-top transition-transform duration-700 z-20"></div>
+      <div class="absolute bottom-0 left-0 w-0 h-0 border-l-[144px] border-r-[144px] border-b-[96px] border-transparent border-b-pink-400 z-10"></div>
+      <div id="wax-seal" class="absolute top-[85px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-yellow-400 rounded-full shadow-lg z-30 flex items-center justify-center text-xl">🎀</div>
     </div>
-    <p id="instruction-text" class="mt-8 text-pink-500 font-medium z-10 animate-pulse text-base sm:text-lg">Tap the gift box to open it 🎁</p>
+    <p id="instruction-text" class="mt-8 text-pink-500 font-medium z-10 animate-pulse text-lg">Tap the gift box to open it 🎁</p>
   </div>
 
   <!-- CONTAINER KONTEN -->
@@ -39,65 +39,57 @@
     <div id="main-content" class="relative z-10 px-6 py-10 hidden flex-col items-center text-center">
       
       <!-- Section 1: Header -->
-      <div class="min-h-[75vh] flex flex-col justify-center items-center w-full reveal-on-scroll py-8">
-        <h1 class="text-3xl sm:text-5xl md:text-6xl calligraphy text-pink-600 mb-3 drop-shadow-md leading-tight px-2">
-          Born to Be Idol or Born to Be Celebrated?
-        </h1>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl text-pink-400 mb-6 calligraphy">
-          Born to be Kasih Rifka Ferinda
-        </h2>
+      <div class="min-h-[75vh] flex flex-col justify-center items-center w-full reveal-on-scroll">
+        <h1 class="text-4xl md:text-6xl calligraphy text-pink-600 mb-4 drop-shadow-md leading-relaxed">Born to Be Idol or Born to Be Celebrated?</h1>
+        <h2 class="text-3xl md:text-4xl text-pink-400 mb-8 calligraphy">Born to be Kasih Rifka Ferinda</h2>
         
-        <p class="w-full text-center text-lg sm:text-xl leading-relaxed italic text-gray-600 handwriting px-4">
+        <p class="w-full text-center text-xl leading-relaxed italic text-gray-600 handwriting px-4">
           “Wishing you happiness, good health, and all your dreams come true.” 🤍
         </p>
       </div>
 
-      <!-- Section 2: Message For U (Animasi Lancar, Pasti Keliatan) -->
-      <div class="min-h-[70vh] flex flex-col justify-center w-full text-left reveal-on-scroll py-8">
-        <h3 class="text-3xl sm:text-4xl calligraphy text-pink-500 mb-6 pb-2 text-center border-b border-pink-100">
-          A Message For U 💌
-        </h3>
-        <p class="leading-relaxed indent-8 text-lg sm:text-xl text-gray-700 mb-4">
+      <!-- Section 2: Message For U -->
+      <div class="min-h-[70vh] flex flex-col justify-center w-full text-left reveal-on-scroll">
+        <h3 class="text-4xl calligraphy text-pink-500 mb-8 pb-2 text-center border-b border-pink-100">A Message For U 💌</h3>
+        <p class="leading-relaxed indent-8 text-xl text-gray-700 mb-4">
           (Tulis ucapan dan doa lu di sini nanti).
         </p>
-        <p class="leading-relaxed indent-8 text-lg sm:text-xl text-gray-700">
+        <p class="leading-relaxed indent-8 text-xl text-gray-700">
           (Bisa diedit dan disusul kapan saja).
         </p>
       </div>
 
       <!-- Section 3: Story & Musik -->
-      <div class="min-h-[85vh] flex flex-col justify-center w-full text-left reveal-on-scroll py-8">
-        <p class="text-xs sm:text-sm text-pink-300 mb-1 text-center tracking-widest handwriting uppercase">From My Heart</p>
-        <h3 class="text-3xl sm:text-4xl pb-3 calligraphy text-pink-500 mb-8 text-center border-b border-pink-100">
-          Our Story 📖
-        </h3>
+      <div class="py-12 flex flex-col justify-center w-full text-left reveal-on-scroll">
+        <p class="text-sm text-pink-300 mb-2 text-center handwriting">FROM MY HEART</p>
+        <h3 class="text-4xl pb-4 calligraphy text-pink-500 mb-8 text-center border-b border-pink-100">Our Story 📖</h3>
         
-        <!-- CUSTOM MUSIC PLAYER (Proporsional & Kunci Ukuran) -->
+        <!-- CUSTOM MUSIC PLAYER (Proporsional & Rapi) -->
         <div class="mb-10 w-full max-w-sm mx-auto flex justify-center px-1">
           <div class="bg-white/85 backdrop-blur-md w-full rounded-2xl p-4 pb-5 shadow-lg border border-pink-200 flex flex-col gap-3">
             
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3 overflow-hidden">
-                <img src="LANY.png" alt="Cover Album" class="w-14 h-14 min-w-[56px] min-h-[56px] max-w-[56px] max-h-[56px] rounded-xl shadow-sm object-cover border border-pink-100 flex-shrink-0">
-                
-                <div class="text-left font-sans overflow-hidden">
-                  <p class="text-pink-600 font-bold text-sm leading-tight truncate">you!</p>
-                  <p class="text-pink-400 text-xs mt-0.5 truncate">LANY</p>
-                </div>
+            <div class="flex items-center">
+              <img src="LANY.png" alt="Cover Album" class="w-14 h-14 rounded-xl shadow-sm object-cover border border-pink-100 flex-shrink-0">
+              
+              <div class="ml-3 flex-1 text-left font-sans">
+                <p class="text-pink-600 font-bold text-sm leading-tight">you!</p>
+                <p class="text-pink-400 text-xs mt-1">LANY</p>
               </div>
               
-              <button id="toggle-music" type="button" class="w-11 h-11 min-w-[44px] rounded-full bg-pink-400 text-white flex items-center justify-center hover:bg-pink-500 active:scale-95 transition-all cursor-pointer shadow-md flex-shrink-0">
+              <button id="toggle-music" type="button" class="w-11 h-11 rounded-full bg-pink-400 text-white flex items-center justify-center hover:bg-pink-500 active:scale-95 transition-all cursor-pointer shadow-md flex-shrink-0">
+                <!-- Icon Play -->
                 <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-0.5">
                   <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
                 </svg>
+                <!-- Icon Pause -->
                 <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden">
                   <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clip-rule="evenodd" />
                 </svg>
               </button>
             </div>
 
-            <!-- Progress Slider & Waktu Berjalan -->
-            <div class="w-full flex items-center gap-2.5 font-sans text-[11px] text-pink-500 pt-1">
+            <!-- Progress Slider dengan Durasi Menit Berjalan -->
+            <div class="w-full flex items-center gap-3 font-sans text-[11px] text-pink-500 pt-1">
               <span id="current-time" class="min-w-[28px] text-right font-medium">0:00</span>
               <input type="range" id="seek-slider" value="0" min="0" max="100" step="0.1" class="custom-slider flex-1 h-2 rounded-full appearance-none cursor-pointer outline-none">
               <span id="duration-time" class="min-w-[28px] text-left font-medium">0:00</span>
@@ -107,25 +99,23 @@
           </div>
         </div>
 
-        <p class="text-base sm:text-lg text-pink-400 mb-5 handwriting text-center">Untuk seseorang yang paling manis...</p>
+        <p class="text-lg text-pink-400 mb-6 handwriting text-center">Untuk seseorang yang paling manis...</p>
         
-        <p class="leading-relaxed indent-8 mb-5 italic text-lg sm:text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed indent-8 mb-6 italic text-xl text-gray-700 handwriting">
           (Tulis cerita bagian pertama lu di sini).
         </p>
-        <p class="leading-relaxed indent-8 mb-6 italic text-lg sm:text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed indent-8 mb-8 italic text-xl text-gray-700 handwriting">
           (Tulis cerita bagian kedua lu di sini).
         </p>
         
-        <p class="text-base sm:text-lg text-pink-400 mb-4 handwriting font-bold text-center">My dearest Rifka,</p>
-        <p class="leading-relaxed text-center italic text-lg sm:text-xl text-gray-700 handwriting">
+        <p class="text-lg text-pink-400 mb-6 handwriting font-bold text-center">My dearest Rifka,</p>
+        <p class="leading-relaxed text-center italic text-xl text-gray-700 handwriting">
           (Harapan atau kata-kata penutup).
         </p>
       </div>
       
       <!-- Footer -->
-      <p class="text-pink-300 mt-12 mb-8 calligraphy text-base sm:text-lg reveal-on-scroll text-center">
-        Made with ❤️ by Mohammad Faza Munsya'ari
-      </p>
+      <p class="text-pink-300 mt-12 mb-10 calligraphy text-lg reveal-on-scroll text-center">Made with ❤️ by Mohammad Faza Munsya'ari</p>
     </div>
   </div>
 
