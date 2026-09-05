@@ -10,28 +10,26 @@ const durationTimeEl = document.getElementById('duration-time');
 let isOpen = false;
 let isSeeking = false;
 
-// 1. GENERATE BACKGROUND PETAL VECTOR (Estetis, seragam di iOS & Android)
+// 1. BACKGROUND PETAL
 function initBackgroundPetals() {
   const container = document.getElementById('floating-petals-container');
   if (!container) return;
 
-  // Dua variasi siluet bunga sakura dan daun kelopak
   const petalSVGs = [
     `<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#f472b6"><path d="M12 2C10 6 7 9 3 11c4 2 7 5 9 9 2-4 5-7 9-9-4-2-7-5-9-9z"/></svg>`,
     `<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#fda4af"><path d="M12 3c-2.8 3.5-3.8 6-3.8 8.5 0 3.2 2 5.5 3.8 5.5s3.8-2.3 3.8-5.5C15.8 9 14.8 6.5 12 3z"/></svg>`,
     `<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#fbcfe8"><circle cx="12" cy="12" r="7"/></svg>`
   ];
 
-  const totalPetals = 12; // Jumlah pas, tidak bikin lag di HP
-  for (let i = 0; i < totalPetals; i++) {
+  for (let i = 0; i < 12; i++) {
     const el = document.createElement('div');
     el.className = 'petal';
     el.innerHTML = petalSVGs[i % petalSVGs.length];
 
-    const size = Math.floor(Math.random() * 12 + 14); // 14px - 26px (halus)
-    const leftPos = Math.random() * 92 + 4; // 4% - 96% lebar layar
-    const duration = Math.random() * 6 + 10; // 10s - 16s
-    const delay = Math.random() * 10; // 0s - 10s stagger
+    const size = Math.floor(Math.random() * 10 + 14);
+    const leftPos = Math.random() * 92 + 4;
+    const duration = Math.random() * 5 + 10;
+    const delay = Math.random() * 8;
 
     el.style.width = `${size}px`;
     el.style.height = `${size}px`;
@@ -42,10 +40,9 @@ function initBackgroundPetals() {
     container.appendChild(el);
   }
 }
-
 initBackgroundPetals();
 
-// 2. LOGIKA AUDIO & SLIDER
+// 2. AUDIO & SLIDER
 function formatTime(seconds) {
   if (isNaN(seconds) || seconds < 0) return "0:00";
   const min = Math.floor(seconds / 60);
@@ -59,7 +56,6 @@ function updateSliderVisual(percent) {
 
 function playAudio() {
   if (!bgMusic) return;
-
   const playPromise = bgMusic.play();
   if (playPromise !== undefined) {
     playPromise
@@ -68,9 +64,7 @@ function playAudio() {
         iconPause.classList.remove('hidden');
       })
       .catch(err => {
-        console.warn("Autoplay ditolak browser, user klik manual:", err);
-        iconPause.classList.add('hidden');
-        iconPlay.classList.remove('hidden');
+        console.warn("Autoplay dicegah browser:", err);
       });
   }
 }
@@ -126,10 +120,9 @@ seekSlider.addEventListener('change', () => {
   isSeeking = false;
 });
 
-// 3. LEDAKAN BUNGA AMPLOB
+// 3. LEDAKAN BUNGA AMPLOP
 function createFlowerBurst() {
   const icons = ['🌸', '💮', '💖', '✨'];
-  
   for (let i = 0; i < 40; i++) { 
     const flower = document.createElement('div');
     flower.innerText = icons[Math.floor(Math.random() * icons.length)];
@@ -147,32 +140,11 @@ function createFlowerBurst() {
     flower.style.animationDelay = (Math.random() * 0.25) + 's';
     
     document.body.appendChild(flower);
-
-    setTimeout(() => {
-      flower.remove();
-    }, 3000);
+    setTimeout(() => flower.remove(), 2600);
   }
 }
 
-// 4. SCROLL REVEAL OPTIMASI (Anti-macet di Mobile)
-const setupScrollAnimation = () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      // Sekali terlihat, langsung aktifkan secara permanen
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target); 
-      }
-    });
-  }, { 
-    threshold: 0.05 // Cukup 5% elemen masuk layar, langsung muncul
-  });
-
-  const hiddenElements = document.querySelectorAll('.reveal-on-scroll');
-  hiddenElements.forEach((el) => observer.observe(el));
-};
-
-// 5. EVENT CLICK AMPLOP
+// 4. KLIK AMPLOP
 envelope.addEventListener('click', function() {
   if (isOpen) return; 
   isOpen = true;
@@ -194,14 +166,10 @@ envelope.addEventListener('click', function() {
     
     setTimeout(() => {
       document.body.classList.remove('locked'); 
-      
       const mainContent = document.getElementById('main-content');
       mainContent.classList.remove('hidden'); 
       mainContent.classList.add('flex'); 
-      
       document.getElementById('envelope-screen').style.display = "none"; 
-      
-      setupScrollAnimation();
     }, 800); 
   }, 1800); 
 });

@@ -5,17 +5,17 @@
   font-family: 'Caveat', cursive; 
 }
 
-/* Animasi Background Petal Berputar Halus */
+/* Animasi Background Petal */
 @keyframes floatUpAndSpin {
   0% { 
     transform: translateY(105vh) rotate(0deg) scale(0.7); 
     opacity: 0; 
   }
   15% { 
-    opacity: 0.65; 
+    opacity: 0.6; 
   }
   85% {
-    opacity: 0.65;
+    opacity: 0.6;
   }
   100% { 
     transform: translateY(-15vh) rotate(360deg) scale(1.1); 
@@ -32,20 +32,7 @@
   animation-iteration-count: infinite;
 }
 
-/* Scroll Reveal (Lebih responsif & tidak macet) */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Animasi Bunga Meledak Amplop */
+/* Animasi Bunga Amplop */
 @keyframes shootArc {
   0% { 
     transform: translate(-50%, -50%) scale(0.2) rotate(0deg); 
@@ -65,7 +52,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  animation: shootArc 2.8s ease-out forwards;
+  animation: shootArc 2.5s ease-out forwards;
   pointer-events: none;
   z-index: 60;
 }
@@ -117,7 +104,6 @@ body.locked {
   border: none;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #fff5f8; }
 ::-webkit-scrollbar-thumb { background: #ffc2e0; border-radius: 3px; }
