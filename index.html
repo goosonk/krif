@@ -23,7 +23,7 @@
   <div class="floating-flower" style="left: 25%; color: #FFB6C1; animation-duration: 15s; animation-delay: 6s; font-size: 1rem;">🌸</div>
   <div class="floating-flower" style="left: 85%; color: #FFB6C1; animation-duration: 11s; animation-delay: 7s; font-size: 1.3rem;">🌺</div>
 
-  <!-- BAGIAN 1: LAYAR AMPLOP (Full screen) -->
+  <!-- BAGIAN 1: LAYAR AMPLOP -->
   <div id="envelope-screen" class="fixed inset-0 w-screen h-screen z-50 flex flex-col items-center justify-center bg-[#FFFDFB] overflow-hidden">
     <div id="envelope" class="relative w-72 h-48 bg-pink-300 rounded-md shadow-xl cursor-pointer transform transition-transform duration-500 hover:scale-105">
       <div id="envelope-flap" class="absolute top-0 left-0 w-0 h-0 border-l-[144px] border-r-[144px] border-t-[96px] border-transparent border-t-pink-400 origin-top transition-transform duration-700 z-20"></div>
@@ -53,10 +53,10 @@
       <div class="min-h-[80vh] flex flex-col justify-center w-full text-left reveal-on-scroll">
         <h3 class="text-4xl calligraphy text-pink-500 mb-8 pb-2 text-center border-b border-pink-100">A Message For U 💌</h3>
         <p class="leading-relaxed indent-8 text-xl text-gray-700 mb-4">
-          (Tulis ucapan dan pesan lu di sini).
+          (Tulis pesan lu di sini).
         </p>
         <p class="leading-relaxed indent-8 text-xl text-gray-700">
-          (Bisa diubah dan disusul kapan saja setelah deploy).
+          (Bisa diubah dan disusul kapan saja).
         </p>
       </div>
 
@@ -98,12 +98,8 @@
               <span id="duration-time">0:00</span>
             </div>
 
-            <!-- Tag audio terpisah dengan MIME types -->
-            <audio id="bg-music" loop preload="auto">
-              <source src="lagu.m4a" type="audio/mp4">
-              <source src="lagu.m4a" type="audio/x-m4a">
-              Browser kamu tidak mendukung audio.
-            </audio>
+            <!-- Audio Langsung di src biar aman dibaca browser -->
+            <audio id="bg-music" src="lagu.m4a" preload="auto" loop playsinline></audio>
           </div>
         </div>
 

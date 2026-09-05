@@ -27,7 +27,7 @@ function playAudio() {
           iconPause.classList.remove('hidden');
         })
         .catch(err => {
-          console.warn("Autoplay ditolak browser, user harus klik manual:", err);
+          console.log("Autoplay dicegah browser, user harus klik manual:", err);
         });
     }
   }
@@ -50,6 +50,7 @@ toggleBtn.addEventListener('click', (e) => {
   }
 });
 
+// Update Progress Bar & Waktu Berjalan
 bgMusic.addEventListener('timeupdate', () => {
   if (!isNaN(bgMusic.duration) && bgMusic.duration > 0) {
     const progressPercent = (bgMusic.currentTime / bgMusic.duration) * 100;
@@ -66,6 +67,7 @@ const setDuration = () => {
 bgMusic.addEventListener('loadedmetadata', setDuration);
 bgMusic.addEventListener('canplay', setDuration);
 
+// Klik pada progress bar untuk geser durasi
 progressContainer.addEventListener('click', (e) => {
   const width = progressContainer.clientWidth;
   const clickX = e.offsetX;
