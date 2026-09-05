@@ -10,39 +10,6 @@ const durationTimeEl = document.getElementById('duration-time');
 let isOpen = false;
 let isSeeking = false;
 
-// 1. BACKGROUND PETAL
-function initBackgroundPetals() {
-  const container = document.getElementById('floating-petals-container');
-  if (!container) return;
-
-  const petalSVGs = [
-    `<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#f472b6"><path d="M12 2C10 6 7 9 3 11c4 2 7 5 9 9 2-4 5-7 9-9-4-2-7-5-9-9z"/></svg>`,
-    `<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#fda4af"><path d="M12 3c-2.8 3.5-3.8 6-3.8 8.5 0 3.2 2 5.5 3.8 5.5s3.8-2.3 3.8-5.5C15.8 9 14.8 6.5 12 3z"/></svg>`,
-    `<svg viewBox="0 0 24 24" width="100%" height="100%" fill="#fbcfe8"><circle cx="12" cy="12" r="7"/></svg>`
-  ];
-
-  for (let i = 0; i < 12; i++) {
-    const el = document.createElement('div');
-    el.className = 'petal';
-    el.innerHTML = petalSVGs[i % petalSVGs.length];
-
-    const size = Math.floor(Math.random() * 10 + 14);
-    const leftPos = Math.random() * 92 + 4;
-    const duration = Math.random() * 5 + 10;
-    const delay = Math.random() * 8;
-
-    el.style.width = `${size}px`;
-    el.style.height = `${size}px`;
-    el.style.left = `${leftPos}%`;
-    el.style.animationDuration = `${duration}s`;
-    el.style.animationDelay = `${delay}s`;
-
-    container.appendChild(el);
-  }
-}
-initBackgroundPetals();
-
-// 2. AUDIO & SLIDER
 function formatTime(seconds) {
   if (isNaN(seconds) || seconds < 0) return "0:00";
   const min = Math.floor(seconds / 60);
@@ -50,12 +17,14 @@ function formatTime(seconds) {
   return `${min}:${sec < 10 ? '0' : ''}${sec}`;
 }
 
+// Fungsi mewarnai track slider agar pink mengikuti lagunya
 function updateSliderVisual(percent) {
   seekSlider.style.background = `linear-gradient(to right, #f472b6 ${percent}%, #fce7f3 ${percent}%)`;
 }
 
 function playAudio() {
   if (!bgMusic) return;
+
   const playPromise = bgMusic.play();
   if (playPromise !== undefined) {
     playPromise
@@ -64,7 +33,9 @@ function playAudio() {
         iconPause.classList.remove('hidden');
       })
       .catch(err => {
-        console.warn("Autoplay dicegah browser:", err);
+        console.warn("Autoplay dicegah browser, klik tombol play manual:", err);
+        iconPause.classList.add('hidden');
+        iconPlay.classList.remove('hidden');
       });
   }
 }
@@ -86,6 +57,7 @@ toggleBtn.addEventListener('click', (e) => {
   }
 });
 
+// Update slider dan efek garis saat lagu diputar
 bgMusic.addEventListener('timeupdate', () => {
   if (!isNaN(bgMusic.duration) && bgMusic.duration > 0 && !isSeeking) {
     const progressPercent = (bgMusic.currentTime / bgMusic.duration) * 100;
@@ -104,6 +76,7 @@ bgMusic.addEventListener('loadedmetadata', updateDuration);
 bgMusic.addEventListener('durationchange', updateDuration);
 bgMusic.addEventListener('canplay', updateDuration);
 
+// Event geser slider
 seekSlider.addEventListener('input', () => {
   isSeeking = true;
   updateSliderVisual(seekSlider.value);
@@ -120,15 +93,15 @@ seekSlider.addEventListener('change', () => {
   isSeeking = false;
 });
 
-// 3. LEDAKAN BUNGA AMPLOP
+// Ledakan Bunga Amplop
 function createFlowerBurst() {
-  const icons = ['🌸', '💮', '💖', '✨'];
-  for (let i = 0; i < 40; i++) { 
+  const flowers = ['🌸', '🌺', '💮', '✨', '💖'];
+  for (let i = 0; i < 45; i++) { 
     const flower = document.createElement('div');
-    flower.innerText = icons[Math.floor(Math.random() * icons.length)];
+    flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
     flower.classList.add('burst-flower');
     
-    const tx = (Math.random() - 0.5) * 600 + 'px';
+    const tx = (Math.random() - 0.5) * 650 + 'px';
     const ty = -(Math.random() * 320 + 200) + 'px';
     const rot = (Math.random() * 1080 - 540) + 'deg';
     
@@ -140,11 +113,28 @@ function createFlowerBurst() {
     flower.style.animationDelay = (Math.random() * 0.25) + 's';
     
     document.body.appendChild(flower);
-    setTimeout(() => flower.remove(), 2600);
+    setTimeout(() => flower.remove(), 2800);
   }
 }
 
-// 4. KLIK AMPLOP
+// Logika Scroll Reveal: Sekali masuk layar langsung nampil permanen (anti-macet)
+const setupScrollAnimation = () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target); // Stay visible selamanya!
+      }
+    });
+  }, { 
+    threshold: 0.05 // Cukup 5% terlihat langsung animasi muncul
+  });
+
+  const hiddenElements = document.querySelectorAll('.reveal-on-scroll');
+  hiddenElements.forEach((el) => observer.observe(el));
+};
+
+// Klik Amplop
 envelope.addEventListener('click', function() {
   if (isOpen) return; 
   isOpen = true;
@@ -170,6 +160,17 @@ envelope.addEventListener('click', function() {
       mainContent.classList.remove('hidden'); 
       mainContent.classList.add('flex'); 
       document.getElementById('envelope-screen').style.display = "none"; 
+      
+      // Inisialisasi animasi scroll
+      setupScrollAnimation();
+      
+      // Paksa render elemen paling atas yang udah keliatan
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add('is-visible');
+        }
+      });
     }, 800); 
   }, 1800); 
 });
