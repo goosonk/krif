@@ -14,14 +14,13 @@
 </head>
 <body class="bg-[#FFFDFB] locked relative text-gray-800 handwriting min-h-screen overflow-x-hidden">
 
-  <!-- EFEK BACKGROUND BUNGA MELAYANG -->
-  <div class="floating-flower" style="left: 15%; color: #FFB6C1; animation-duration: 9s; animation-delay: 0s;">🌸</div>
-  <div class="floating-flower" style="left: 35%; color: #FFC0CB; animation-duration: 11s; animation-delay: 3s; font-size: 1.2rem;">💮</div>
-  <div class="floating-flower" style="left: 55%; color: #FFC0CB; animation-duration: 10s; animation-delay: 1.5s;">🌺</div>
-  <div class="floating-flower" style="left: 75%; color: #FFB6C1; animation-duration: 13s; animation-delay: 4.5s; font-size: 1.4rem;">🌸</div>
-  <div class="floating-flower" style="left: 95%; color: #FFC0CB; animation-duration: 14s; animation-delay: 0.8s;">💮</div>
-  <div class="floating-flower" style="left: 25%; color: #FFB6C1; animation-duration: 15s; animation-delay: 6s; font-size: 1rem;">🌸</div>
-  <div class="floating-flower" style="left: 85%; color: #FFB6C1; animation-duration: 11s; animation-delay: 7s; font-size: 1.3rem;">🌺</div>
+  <!-- EFEK BACKGROUND BUNGA MELAYANG (Posisi tersebar aman dari bawah) -->
+  <div class="floating-flower" style="left: 12%; color: #FFB6C1; animation-duration: 10s; animation-delay: 0s;">🌸</div>
+  <div class="floating-flower" style="left: 32%; color: #FFC0CB; animation-duration: 12s; animation-delay: 3s; font-size: 1.2rem;">💮</div>
+  <div class="floating-flower" style="left: 52%; color: #FFC0CB; animation-duration: 11s; animation-delay: 1.5s;">🌺</div>
+  <div class="floating-flower" style="left: 72%; color: #FFB6C1; animation-duration: 13s; animation-delay: 4.5s; font-size: 1.3rem;">🌸</div>
+  <div class="floating-flower" style="left: 88%; color: #FFC0CB; animation-duration: 14s; animation-delay: 2s; font-size: 1.1rem;">💮</div>
+  <div class="floating-flower" style="left: 22%; color: #FFB6C1; animation-duration: 15s; animation-delay: 6s; font-size: 1rem;">🌸</div>
 
   <!-- BAGIAN 1: LAYAR AMPLOP -->
   <div id="envelope-screen" class="fixed inset-0 w-screen h-screen z-50 flex flex-col items-center justify-center bg-[#FFFDFB] overflow-hidden">
@@ -33,7 +32,7 @@
     <p id="instruction-text" class="mt-8 text-pink-500 font-medium z-10 animate-pulse text-lg">Tap the gift box to open it 🎁</p>
   </div>
 
-  <!-- CONTAINER KONTEN -->
+  <!-- CONTAINER KONTEN (Tampilan Tengah) -->
   <div class="max-w-screen-sm mx-auto min-h-screen relative">
 
     <!-- BAGIAN 2: KONTEN UTAMA -->
@@ -53,10 +52,10 @@
       <div class="min-h-[80vh] flex flex-col justify-center w-full text-left reveal-on-scroll">
         <h3 class="text-4xl calligraphy text-pink-500 mb-8 pb-2 text-center border-b border-pink-100">A Message For U 💌</h3>
         <p class="leading-relaxed indent-8 text-xl text-gray-700 mb-4">
-          (Tulis pesan lu di sini).
+          (Tulis ucapan dan doa lu di sini nanti).
         </p>
         <p class="leading-relaxed indent-8 text-xl text-gray-700">
-          (Bisa diubah dan disusul kapan saja).
+          (Bisa disusul kapan saja).
         </p>
       </div>
 
@@ -77,7 +76,7 @@
                 <p class="text-pink-400 text-xs mt-0.5">LANY</p>
               </div>
               
-              <button id="toggle-music" class="w-11 h-11 rounded-full bg-pink-400 text-white flex items-center justify-center hover:bg-pink-500 active:scale-95 transition-all cursor-pointer shadow-md">
+              <button id="toggle-music" type="button" class="w-11 h-11 rounded-full bg-pink-400 text-white flex items-center justify-center hover:bg-pink-500 active:scale-95 transition-all cursor-pointer shadow-md">
                 <!-- Icon Play -->
                 <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-0.5">
                   <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
@@ -89,7 +88,7 @@
               </button>
             </div>
 
-            <!-- Progress Bar & Durasi Waktu -->
+            <!-- Progress Bar & Durasi Waktu Berjalan -->
             <div class="w-full flex items-center gap-2 font-sans text-[11px] text-pink-400 mt-1">
               <span id="current-time">0:00</span>
               <div id="progress-container" class="flex-1 h-1.5 bg-pink-100 rounded-full cursor-pointer overflow-hidden">
@@ -98,7 +97,7 @@
               <span id="duration-time">0:00</span>
             </div>
 
-            <!-- Audio Langsung di src biar aman dibaca browser -->
+            <!-- Elemen Audio Utama -->
             <audio id="bg-music" src="lagu.m4a" preload="auto" loop playsinline></audio>
           </div>
         </div>

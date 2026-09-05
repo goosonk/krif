@@ -11,25 +11,27 @@ const durationTimeEl = document.getElementById('duration-time');
 let isOpen = false;
 
 function formatTime(seconds) {
-  if (isNaN(seconds)) return "0:00";
+  if (isNaN(seconds) || seconds < 0) return "0:00";
   const min = Math.floor(seconds / 60);
   const sec = Math.floor(seconds % 60);
   return `${min}:${sec < 10 ? '0' : ''}${sec}`;
 }
 
 function playAudio() {
-  if (bgMusic) {
-    const playPromise = bgMusic.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          iconPlay.classList.add('hidden');
-          iconPause.classList.remove('hidden');
-        })
-        .catch(err => {
-          console.log("Autoplay dicegah browser, user harus klik manual:", err);
-        });
-    }
+  if (!bgMusic) return;
+
+  const playPromise = bgMusic.play();
+  if (playPromise !== undefined) {
+    playPromise
+      .then(() => {
+        iconPlay.classList.add('hidden');
+        iconPause.classList.remove('hidden');
+      })
+      .catch(err => {
+        console.warn("Autoplay dicegah browser, harus tap manual:", err);
+        iconPause.classList.add('hidden');
+        iconPlay.classList.remove('hidden');
+      });
   }
 }
 
@@ -41,6 +43,7 @@ function pauseAudio() {
   }
 }
 
+// Tombol manual Play/Pause
 toggleBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   if (bgMusic.paused) {
@@ -50,7 +53,7 @@ toggleBtn.addEventListener('click', (e) => {
   }
 });
 
-// Update Progress Bar & Waktu Berjalan
+// Update Progress Bar & Menit Berjalan
 bgMusic.addEventListener('timeupdate', () => {
   if (!isNaN(bgMusic.duration) && bgMusic.duration > 0) {
     const progressPercent = (bgMusic.currentTime / bgMusic.duration) * 100;
@@ -59,20 +62,22 @@ bgMusic.addEventListener('timeupdate', () => {
   }
 });
 
-const setDuration = () => {
-  if (!isNaN(bgMusic.duration)) {
+// Update total durasi lagu
+const updateDuration = () => {
+  if (!isNaN(bgMusic.duration) && bgMusic.duration > 0) {
     durationTimeEl.innerText = formatTime(bgMusic.duration);
   }
 };
-bgMusic.addEventListener('loadedmetadata', setDuration);
-bgMusic.addEventListener('canplay', setDuration);
+bgMusic.addEventListener('loadedmetadata', updateDuration);
+bgMusic.addEventListener('durationchange', updateDuration);
+bgMusic.addEventListener('canplay', updateDuration);
 
-// Klik pada progress bar untuk geser durasi
+// Fitur klik timeline progress bar untuk geser durasi
 progressContainer.addEventListener('click', (e) => {
   const width = progressContainer.clientWidth;
   const clickX = e.offsetX;
   const duration = bgMusic.duration;
-  if (!isNaN(duration)) {
+  if (!isNaN(duration) && duration > 0) {
     bgMusic.currentTime = (clickX / width) * duration;
   }
 });
@@ -80,7 +85,7 @@ progressContainer.addEventListener('click', (e) => {
 function createFlowerBurst() {
   const flowers = ['🌸', '🌺', '💮', '✨', '💖'];
   
-  for(let i = 0; i < 50; i++) { 
+  for (let i = 0; i < 50; i++) { 
     const flower = document.createElement('div');
     flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
     flower.classList.add('burst-flower');

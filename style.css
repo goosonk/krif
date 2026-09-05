@@ -1,73 +1,91 @@
 .calligraphy { 
-    font-family: 'Pacifico', cursive; 
+  font-family: 'Pacifico', cursive; 
+}
+.handwriting { 
+  font-family: 'Caveat', cursive; 
+}
+
+/* Animasi background bunga melayang (Mulai murni dari bawah layar) */
+@keyframes floatFlower {
+  0% { 
+    transform: translateY(0) scale(0.6); 
+    opacity: 0; 
   }
-  .handwriting { 
-    font-family: 'Caveat', cursive; 
+  15% { 
+    opacity: 0.8; 
   }
-  
-  @keyframes floatFlower {
-    0% { transform: translateY(110vh) scale(0.6); opacity: 0; }
-    20% { opacity: 0.8; }
-    100% { transform: translateY(-10vh) scale(1.4); opacity: 0; }
+  90% {
+    opacity: 0.8;
   }
-  
-  .floating-flower {
-    position: fixed;
-    font-size: 1.8rem;
-    animation: floatFlower 12s linear infinite;
-    z-index: 0;
+  100% { 
+    transform: translateY(-125vh) scale(1.3); 
+    opacity: 0; 
   }
-  
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(80px);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.floating-flower {
+  position: fixed;
+  top: 100vh; /* Memastikan bunga tidak pernah muncul di atas layar sebelum animasi berjalan */
+  font-size: 1.6rem;
+  animation: floatFlower 12s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Animasi Scroll Reveal */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animasi bunga meledak saat buka amplop */
+@keyframes shootArc {
+  0% { 
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg); 
+    opacity: 1; 
   }
-  
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+  40% { 
+    transform: translate(calc(-50% + var(--tx) * 0.7), calc(-50% + var(--ty))) scale(1.5) rotate(180deg); 
+    opacity: 1; 
   }
-  
-  @keyframes shootArc {
-    0% { 
-      transform: translate(-50%, -50%) scale(0.2) rotate(0deg); 
-      opacity: 1; 
-    }
-    40% { 
-      transform: translate(calc(-50% + var(--tx) * 0.7), calc(-50% + var(--ty))) scale(1.5) rotate(180deg); 
-      opacity: 1; 
-    }
-    100% { 
-      transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty) + 1000px)) scale(0.8) rotate(var(--rot)); 
-      opacity: 0; 
-    }
+  100% { 
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty) + 1000px)) scale(0.8) rotate(var(--rot)); 
+    opacity: 0; 
   }
-  
-  .burst-flower {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    animation: shootArc 3s ease-out forwards;
-    pointer-events: none;
-    z-index: 60;
-  }
-  
-  body.locked { 
-    overflow: hidden; 
-  }
-  
-  .fade-out {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease-out, visibility 1s;
-  }
-  
-  #envelope-screen {
-    overflow: hidden;
-  }
-  
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #fff5f8; }
-  ::-webkit-scrollbar-thumb { background: #ffc2e0; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #ff91b8; }
+}
+
+.burst-flower {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  animation: shootArc 3s ease-out forwards;
+  pointer-events: none;
+  z-index: 60;
+}
+
+body.locked { 
+  overflow: hidden; 
+}
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-out, visibility 1s;
+}
+
+#envelope-screen {
+  overflow: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #fff5f8; }
+::-webkit-scrollbar-thumb { background: #ffc2e0; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #ff91b8; }
