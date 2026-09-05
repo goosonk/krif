@@ -3,12 +3,12 @@ const bgMusic = document.getElementById('bg-music');
 const toggleBtn = document.getElementById('toggle-music');
 const iconPlay = document.getElementById('icon-play');
 const iconPause = document.getElementById('icon-pause');
-const progressBar = document.getElementById('progress-bar');
-const progressContainer = document.getElementById('progress-container');
+const seekSlider = document.getElementById('seek-slider');
 const currentTimeEl = document.getElementById('current-time');
 const durationTimeEl = document.getElementById('duration-time');
 
 let isOpen = false;
+let isSeeking = false;
 
 function formatTime(seconds) {
   if (isNaN(seconds) || seconds < 0) return "0:00";
@@ -28,7 +28,7 @@ function playAudio() {
         iconPause.classList.remove('hidden');
       })
       .catch(err => {
-        console.warn("Autoplay dicegah browser, harus tap manual:", err);
+        console.warn("Autoplay dicegah browser, user harus klik manual:", err);
         iconPause.classList.add('hidden');
         iconPlay.classList.remove('hidden');
       });
@@ -53,11 +53,11 @@ toggleBtn.addEventListener('click', (e) => {
   }
 });
 
-// Update Progress Bar & Menit Berjalan
+// Update slider saat audio berjalan (hanya ketika user tidak sedang menyeret slider)
 bgMusic.addEventListener('timeupdate', () => {
-  if (!isNaN(bgMusic.duration) && bgMusic.duration > 0) {
+  if (!isNaN(bgMusic.duration) && bgMusic.duration > 0 && !isSeeking) {
     const progressPercent = (bgMusic.currentTime / bgMusic.duration) * 100;
-    progressBar.style.width = `${progressPercent}%`;
+    seekSlider.value = progressPercent;
     currentTimeEl.innerText = formatTime(bgMusic.currentTime);
   }
 });
@@ -72,14 +72,21 @@ bgMusic.addEventListener('loadedmetadata', updateDuration);
 bgMusic.addEventListener('durationchange', updateDuration);
 bgMusic.addEventListener('canplay', updateDuration);
 
-// Fitur klik timeline progress bar untuk geser durasi
-progressContainer.addEventListener('click', (e) => {
-  const width = progressContainer.clientWidth;
-  const clickX = e.offsetX;
-  const duration = bgMusic.duration;
-  if (!isNaN(duration) && duration > 0) {
-    bgMusic.currentTime = (clickX / width) * duration;
+// Event geser slider (saat jari bergerak)
+seekSlider.addEventListener('input', () => {
+  isSeeking = true;
+  if (!isNaN(bgMusic.duration) && bgMusic.duration > 0) {
+    const targetTime = (seekSlider.value / 100) * bgMusic.duration;
+    currentTimeEl.innerText = formatTime(targetTime);
   }
+});
+
+// Event geser slider selesai (saat jari diangkat)
+seekSlider.addEventListener('change', () => {
+  if (!isNaN(bgMusic.duration) && bgMusic.duration > 0) {
+    bgMusic.currentTime = (seekSlider.value / 100) * bgMusic.duration;
+  }
+  isSeeking = false;
 });
 
 function createFlowerBurst() {

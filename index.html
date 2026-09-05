@@ -14,7 +14,7 @@
 </head>
 <body class="bg-[#FFFDFB] locked relative text-gray-800 handwriting min-h-screen overflow-x-hidden">
 
-  <!-- EFEK BACKGROUND BUNGA MELAYANG (Posisi tersebar aman dari bawah) -->
+  <!-- EFEK BACKGROUND BUNGA MELAYANG -->
   <div class="floating-flower" style="left: 12%; color: #FFB6C1; animation-duration: 10s; animation-delay: 0s;">🌸</div>
   <div class="floating-flower" style="left: 32%; color: #FFC0CB; animation-duration: 12s; animation-delay: 3s; font-size: 1.2rem;">💮</div>
   <div class="floating-flower" style="left: 52%; color: #FFC0CB; animation-duration: 11s; animation-delay: 1.5s;">🌺</div>
@@ -32,7 +32,7 @@
     <p id="instruction-text" class="mt-8 text-pink-500 font-medium z-10 animate-pulse text-lg">Tap the gift box to open it 🎁</p>
   </div>
 
-  <!-- CONTAINER KONTEN (Tampilan Tengah) -->
+  <!-- CONTAINER KONTEN -->
   <div class="max-w-screen-sm mx-auto min-h-screen relative">
 
     <!-- BAGIAN 2: KONTEN UTAMA -->
@@ -55,7 +55,7 @@
           (Tulis ucapan dan doa lu di sini nanti).
         </p>
         <p class="leading-relaxed indent-8 text-xl text-gray-700">
-          (Bisa disusul kapan saja).
+          (Bisa diedit dan disusul kapan saja).
         </p>
       </div>
 
@@ -88,12 +88,10 @@
               </button>
             </div>
 
-            <!-- Progress Bar & Durasi Waktu Berjalan -->
-            <div class="w-full flex items-center gap-2 font-sans text-[11px] text-pink-400 mt-1">
+            <!-- Progress Slider & Durasi Waktu (Dukungan Tap & Slide) -->
+            <div class="w-full flex items-center gap-2 font-sans text-[11px] text-pink-500 mt-1">
               <span id="current-time">0:00</span>
-              <div id="progress-container" class="flex-1 h-1.5 bg-pink-100 rounded-full cursor-pointer overflow-hidden">
-                <div id="progress-bar" class="h-full bg-pink-400 w-0 transition-all duration-100"></div>
-              </div>
+              <input type="range" id="seek-slider" value="0" min="0" max="100" step="0.1" class="custom-slider flex-1 h-1.5 bg-pink-100 rounded-full appearance-none cursor-pointer outline-none">
               <span id="duration-time">0:00</span>
             </div>
 
