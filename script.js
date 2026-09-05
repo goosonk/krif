@@ -17,6 +17,11 @@ function formatTime(seconds) {
   return `${min}:${sec < 10 ? '0' : ''}${sec}`;
 }
 
+// Fungsi pewarnaan garis slider (pink pekat di bagian terputar, pink muda di sisa lagu)
+function updateSliderVisual(percent) {
+  seekSlider.style.background = `linear-gradient(to right, #f472b6 ${percent}%, #fce7f3 ${percent}%)`;
+}
+
 function playAudio() {
   if (!bgMusic) return;
 
@@ -53,12 +58,13 @@ toggleBtn.addEventListener('click', (e) => {
   }
 });
 
-// Update slider saat audio berjalan (hanya ketika user tidak sedang menyeret slider)
+// Update slider dan efek garis terisi saat lagu berjalan
 bgMusic.addEventListener('timeupdate', () => {
   if (!isNaN(bgMusic.duration) && bgMusic.duration > 0 && !isSeeking) {
     const progressPercent = (bgMusic.currentTime / bgMusic.duration) * 100;
     seekSlider.value = progressPercent;
     currentTimeEl.innerText = formatTime(bgMusic.currentTime);
+    updateSliderVisual(progressPercent);
   }
 });
 
@@ -72,16 +78,17 @@ bgMusic.addEventListener('loadedmetadata', updateDuration);
 bgMusic.addEventListener('durationchange', updateDuration);
 bgMusic.addEventListener('canplay', updateDuration);
 
-// Event geser slider (saat jari bergerak)
+// Event geser slider
 seekSlider.addEventListener('input', () => {
   isSeeking = true;
+  updateSliderVisual(seekSlider.value);
   if (!isNaN(bgMusic.duration) && bgMusic.duration > 0) {
     const targetTime = (seekSlider.value / 100) * bgMusic.duration;
     currentTimeEl.innerText = formatTime(targetTime);
   }
 });
 
-// Event geser slider selesai (saat jari diangkat)
+// Selesai geser slider
 seekSlider.addEventListener('change', () => {
   if (!isNaN(bgMusic.duration) && bgMusic.duration > 0) {
     bgMusic.currentTime = (seekSlider.value / 100) * bgMusic.duration;

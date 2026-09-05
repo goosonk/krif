@@ -84,29 +84,35 @@ body.locked {
   overflow: hidden;
 }
 
-/* Custom Styling Slider Musik agar bisa di-slide mulus */
+/* Custom Styling Slider Musik & Warna Fill Progress */
+.custom-slider {
+  background: linear-gradient(to right, #f472b6 0%, #fce7f3 0%);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .custom-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: #f472b6;
+  background: #ec4899;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
   transition: transform 0.1s ease;
 }
 
 .custom-slider::-webkit-slider-thumb:active {
   transform: scale(1.3);
-  background: #ec4899;
+  background: #db2777;
 }
 
 .custom-slider::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: #f472b6;
+  background: #ec4899;
   cursor: pointer;
   border: none;
 }

@@ -39,7 +39,7 @@
     <div id="main-content" class="relative z-10 px-6 py-10 hidden flex-col items-center text-center">
       
       <!-- Section 1: Header -->
-      <div class="min-h-[85vh] flex flex-col justify-center items-center w-full reveal-on-scroll">
+      <div class="min-h-[75vh] flex flex-col justify-center items-center w-full reveal-on-scroll">
         <h1 class="text-4xl md:text-6xl calligraphy text-pink-600 mb-4 drop-shadow-md leading-relaxed">Born to Be Idol or Born to Be Celebrated?</h1>
         <h2 class="text-3xl md:text-4xl text-pink-400 mb-8 calligraphy">Born to be Kasih Rifka Ferinda</h2>
         
@@ -49,7 +49,7 @@
       </div>
 
       <!-- Section 2: Message For U -->
-      <div class="min-h-[80vh] flex flex-col justify-center w-full text-left reveal-on-scroll">
+      <div class="min-h-[70vh] flex flex-col justify-center w-full text-left reveal-on-scroll">
         <h3 class="text-4xl calligraphy text-pink-500 mb-8 pb-2 text-center border-b border-pink-100">A Message For U 💌</h3>
         <p class="leading-relaxed indent-8 text-xl text-gray-700 mb-4">
           (Tulis ucapan dan doa lu di sini nanti).
@@ -60,23 +60,23 @@
       </div>
 
       <!-- Section 3: Story & Musik -->
-      <div class="min-h-[90vh] flex flex-col justify-center w-full text-left reveal-on-scroll">
+      <div class="py-12 flex flex-col justify-center w-full text-left reveal-on-scroll">
         <p class="text-sm text-pink-300 mb-2 text-center handwriting">FROM MY HEART</p>
-        <h3 class="text-4xl pb-4 calligraphy text-pink-500 mb-10 text-center border-b border-pink-100">Our Story 📖</h3>
+        <h3 class="text-4xl pb-4 calligraphy text-pink-500 mb-8 text-center border-b border-pink-100">Our Story 📖</h3>
         
-        <!-- CUSTOM MUSIC PLAYER -->
-        <div class="mb-12 w-full max-w-sm mx-auto flex justify-center">
-          <div class="bg-white/80 backdrop-blur-md w-full rounded-2xl p-4 shadow-lg border border-pink-200 flex flex-col gap-2">
+        <!-- CUSTOM MUSIC PLAYER (Proporsional & Rapi) -->
+        <div class="mb-10 w-full max-w-sm mx-auto flex justify-center px-1">
+          <div class="bg-white/85 backdrop-blur-md w-full rounded-2xl p-4 pb-5 shadow-lg border border-pink-200 flex flex-col gap-3">
             
             <div class="flex items-center">
-              <img src="LANY.png" alt="Cover Album" class="w-14 h-14 rounded-md shadow-sm object-cover border border-pink-100">
+              <img src="LANY.png" alt="Cover Album" class="w-14 h-14 rounded-xl shadow-sm object-cover border border-pink-100 flex-shrink-0">
               
               <div class="ml-3 flex-1 text-left font-sans">
                 <p class="text-pink-600 font-bold text-sm leading-tight">you!</p>
-                <p class="text-pink-400 text-xs mt-0.5">LANY</p>
+                <p class="text-pink-400 text-xs mt-1">LANY</p>
               </div>
               
-              <button id="toggle-music" type="button" class="w-11 h-11 rounded-full bg-pink-400 text-white flex items-center justify-center hover:bg-pink-500 active:scale-95 transition-all cursor-pointer shadow-md">
+              <button id="toggle-music" type="button" class="w-11 h-11 rounded-full bg-pink-400 text-white flex items-center justify-center hover:bg-pink-500 active:scale-95 transition-all cursor-pointer shadow-md flex-shrink-0">
                 <!-- Icon Play -->
                 <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-0.5">
                   <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
@@ -88,14 +88,13 @@
               </button>
             </div>
 
-            <!-- Progress Slider & Durasi Waktu (Dukungan Tap & Slide) -->
-            <div class="w-full flex items-center gap-2 font-sans text-[11px] text-pink-500 mt-1">
-              <span id="current-time">0:00</span>
-              <input type="range" id="seek-slider" value="0" min="0" max="100" step="0.1" class="custom-slider flex-1 h-1.5 bg-pink-100 rounded-full appearance-none cursor-pointer outline-none">
-              <span id="duration-time">0:00</span>
+            <!-- Progress Slider dengan Durasi Menit Berjalan -->
+            <div class="w-full flex items-center gap-3 font-sans text-[11px] text-pink-500 pt-1">
+              <span id="current-time" class="min-w-[28px] text-right font-medium">0:00</span>
+              <input type="range" id="seek-slider" value="0" min="0" max="100" step="0.1" class="custom-slider flex-1 h-2 rounded-full appearance-none cursor-pointer outline-none">
+              <span id="duration-time" class="min-w-[28px] text-left font-medium">0:00</span>
             </div>
 
-            <!-- Elemen Audio Utama -->
             <audio id="bg-music" src="lagu.m4a" preload="auto" loop playsinline></audio>
           </div>
         </div>
@@ -116,7 +115,7 @@
       </div>
       
       <!-- Footer -->
-      <p class="text-pink-300 mt-20 mb-10 calligraphy text-lg reveal-on-scroll text-center">Made with ❤️ by Mohammad Faza Munsya'ari</p>
+      <p class="text-pink-300 mt-12 mb-10 calligraphy text-lg reveal-on-scroll text-center">Made with ❤️ by Mohammad Faza Munsya'ari</p>
     </div>
   </div>
 
