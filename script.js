@@ -168,7 +168,7 @@ btnNextStory.addEventListener('click', () => {
   }, 100);
 
   // 5. Ubah teks tombol (Font tetap besar, tegas, dan proporsional)
-  btnNextStory.innerHTML = "<span class='text-xl sm:text-2xl handwriting font-bold leading-snug drop-shadow'>Selamat Membaca Ceritaku yaah maaf kalau panjang.. 🤍</span>";
+  btnNextStory.innerHTML = "<span class='text-xl sm:text-2xl handwriting font-bold leading-snug drop-shadow'>Selamat membaca ceritaku yaah maaf kalau panjang.. </span>";
   btnNextStory.classList.add('opacity-85', 'cursor-default');
   btnNextStory.disabled = true;
 });
