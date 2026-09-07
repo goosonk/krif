@@ -168,7 +168,7 @@ btnNextStory.addEventListener('click', () => {
   }, 100);
 
   // 5. Ubah teks tombol
-  btnNextStory.innerHTML = "<span>Selamat Membaca Ceritaku 🤍</span>";
+  btnNextStory.innerHTML = "<span>Selamat Membaca Ceritaku yaah maaf kalau panjang..</span>";
   btnNextStory.classList.add('opacity-75', 'cursor-default');
   btnNextStory.disabled = true;
 });
