@@ -167,9 +167,9 @@ btnNextStory.addEventListener('click', () => {
     storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 100);
 
-  // 5. Ubah teks tombol
-  btnNextStory.innerHTML = "<span>Selamat Membaca Ceritaku yaah maaf kalau panjang..</span>";
-  btnNextStory.classList.add('opacity-75', 'cursor-default');
+  // 5. Ubah teks tombol (Font tetap besar, tegas, dan proporsional)
+  btnNextStory.innerHTML = "<span class='text-xl sm:text-2xl handwriting font-bold leading-snug drop-shadow'>Selamat Membaca Ceritaku yaah maaf kalau panjang.. 🤍</span>";
+  btnNextStory.classList.add('opacity-85', 'cursor-default');
   btnNextStory.disabled = true;
 });
 
