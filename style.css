@@ -117,6 +117,22 @@ body.locked {
   border: none;
 }
 
+/* Animasi Muncul Halus untuk Chapter Cerita */
+.fade-in-section {
+  animation: fadeInStory 1s ease-out forwards;
+}
+
+@keyframes fadeInStory {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #fff5f8; }
