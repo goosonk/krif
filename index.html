@@ -14,6 +14,7 @@
 </head>
 <body class="bg-[#FFFDFB] locked relative text-gray-800 handwriting min-h-screen overflow-x-hidden">
 
+  <!-- EFEK BACKGROUND BUNGA MELAYANG -->
   <div class="floating-flower" style="left: 12%; color: #FFB6C1; animation-duration: 10s; animation-delay: 0s;">🌸</div>
   <div class="floating-flower" style="left: 32%; color: #FFC0CB; animation-duration: 12s; animation-delay: 3s; font-size: 1.2rem;">💮</div>
   <div class="floating-flower" style="left: 52%; color: #FFC0CB; animation-duration: 11s; animation-delay: 1.5s;">🌺</div>
@@ -21,6 +22,7 @@
   <div class="floating-flower" style="left: 88%; color: #FFC0CB; animation-duration: 14s; animation-delay: 2s; font-size: 1.1rem;">💮</div>
   <div class="floating-flower" style="left: 22%; color: #FFB6C1; animation-duration: 15s; animation-delay: 6s; font-size: 1rem;">🌸</div>
 
+  <!-- BAGIAN 1: LAYAR AMPLOP -->
   <div id="envelope-screen" class="fixed inset-0 w-screen h-screen z-50 flex flex-col items-center justify-center bg-[#FFFDFB] overflow-hidden">
     <div id="envelope" class="relative w-72 h-48 bg-pink-300 rounded-md shadow-xl cursor-pointer transform transition-transform duration-500 hover:scale-105">
       <div id="envelope-flap" class="absolute top-0 left-0 w-0 h-0 border-l-[144px] border-r-[144px] border-t-[96px] border-transparent border-t-pink-400 origin-top transition-transform duration-700 z-20"></div>
@@ -30,10 +32,13 @@
     <p id="instruction-text" class="mt-8 text-pink-500 font-medium z-10 animate-pulse text-lg">Tap to open it</p>
   </div>
 
+  <!-- CONTAINER KONTEN -->
   <div class="max-w-screen-sm mx-auto min-h-screen relative">
 
+    <!-- BAGIAN 2: KONTEN UTAMA -->
     <div id="main-content" class="relative z-10 px-6 py-10 hidden flex-col items-center text-center">
       
+      <!-- Section 1: Header -->
       <div class="min-h-[75vh] flex flex-col justify-center items-center w-full reveal-on-scroll">
         <h1 class="text-2xl sm:text-4xl md:text-6xl calligraphy text-pink-600 mb-4 drop-shadow-md leading-relaxed px-2">Born to Be Idol or Born to Be Celebrated?</h1>
         <h2 class="text-xl sm:text-3xl md:text-4xl text-pink-400 mb-8 calligraphy">Born to be Kasih Rifka Ferinda</h2>
@@ -43,6 +48,7 @@
         </p>
       </div>
 
+      <!-- Section 2: Message For U -->
       <div class="min-h-[70vh] flex flex-col justify-center w-full text-left reveal-on-scroll">
         <h3 class="text-4xl calligraphy text-pink-500 mb-8 pb-2 text-center border-b border-pink-100">A Message For U</h3>
         <p class="leading-relaxed indent-8 text-xl text-gray-700 mb-4">
@@ -66,6 +72,7 @@
           Semangat terus yaa... aku ngga akan pernah capek bilang ini ke Rifka kalau butuh bantuan apa pun, atau mau cerita feel free yah..     
         </p>
 
+        <!-- CUSTOM MUSIC PLAYER 1 (HIVI! - Jatuh, Bangkit Kembali!) -->
         <div class="mb-8 w-full max-w-sm mx-auto flex justify-center px-1">
           <div class="bg-white/85 backdrop-blur-md w-full rounded-2xl p-4 pb-5 shadow-lg border border-pink-200 flex flex-col gap-3">
             <div class="flex items-center">
@@ -84,6 +91,7 @@
               </button>
             </div>
 
+            <!-- Progress Slider Lagu 1 -->
             <div class="w-full flex items-center gap-3 font-sans text-[11px] text-pink-500 pt-1">
               <span id="current-time-1" class="min-w-[28px] text-right font-medium">0:00</span>
               <input type="range" id="seek-slider-1" value="0" min="0" max="100" step="0.1" class="custom-slider flex-1 h-2 rounded-full appearance-none cursor-pointer outline-none">
@@ -94,6 +102,7 @@
           </div>
         </div>
 
+        <!-- TOMBOL INTERAKTIF LANJUT KE CERITA -->
         <div class="text-center mt-3 mb-10 w-full flex justify-center px-2">
           <button id="btn-next-story" type="button" class="group relative w-full max-w-sm px-6 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full shadow-lg hover:shadow-xl hover:from-pink-500 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 active:scale-95 text-xl sm:text-2xl handwriting font-bold leading-snug cursor-pointer flex items-center justify-center text-center drop-shadow">
             <span>Udah dibaca yaa? teken ini dong aku mau cerita..</span>
@@ -101,12 +110,14 @@
         </div>
       </div>
 
-      <div id="story-section" class="py-12 flex-col justify-center w-full text-left hidden">
+      <!-- Section 3: Story & Musik (Rata Kanan-Kiri / Text-Justify) -->
+      <div id="story-section" class="py-12 flex-col justify-center w-full hidden">
         <p class="text-sm text-pink-300 mb-2 text-center handwriting">FROM MY HEART</p>
         <h3 class="text-4xl pb-4 calligraphy text-pink-500 mb-8 text-center border-b border-pink-100">A Little Story</h3>
         
+        <!-- CUSTOM MUSIC PLAYER 2 (LANY - you!) -->
         <div class="mb-10 w-full max-w-sm mx-auto flex justify-center px-1">
-          <div class="bg-white/85 backdrop-blur-md w-full rounded-2xl p-4 pb-5 shadow-lg border border-pink-200 flex flex-col gap-3">
+          <div class="bg-white/85 backdrop-blur-md w-full rounded-2xl p-4 pb-5 shadow-lg border border-pink-200 flex flex-col gap-3 text-left">
             <div class="flex items-center">
               <img src="LANY.png" alt="Cover Album" class="w-14 h-14 rounded-xl shadow-sm object-cover border border-pink-100 flex-shrink-0">
               <div class="ml-3 flex-1 text-left font-sans">
@@ -123,6 +134,7 @@
               </button>
             </div>
 
+            <!-- Progress Slider Lagu 2 -->
             <div class="w-full flex items-center gap-3 font-sans text-[11px] text-pink-500 pt-1">
               <span id="current-time-2" class="min-w-[28px] text-right font-medium">0:00</span>
               <input type="range" id="seek-slider-2" value="0" min="0" max="100" step="0.1" class="custom-slider flex-1 h-2 rounded-full appearance-none cursor-pointer outline-none">
@@ -135,53 +147,59 @@
 
         <p class="text-lg text-pink-400 mb-6 handwriting text-center">Maaf kalau kepanjangan karena beneran dari hati ini no edit ai</p>
         
-        <p class="leading-relaxed indent-8 mb-6 text-xl text-gray-700 handwriting">
+        <!-- PARAGRAF DIBUAT RATA KANAN-KIRI (TEXT-JUSTIFY) -->
+        <p class="leading-relaxed mb-6 text-xl text-gray-700 handwriting text-justify">
           Mau sedikit bercerita (boong, banyak) tentang kamu dari sudut pandang aku hihi. Karena kalau first impression aku dah pernah cerita jadi aku mau cerita gimana awalnya dan apasih yang aku rasa hehe. Pertama kali aku ada rasa keknya di bulan Mei karena gada alasan juga sih, sering banget terucap entah di mulut atau di hati kata lucu dengan spontan setiap ada Rifka setiap interaksi sama Rifka. Titik awal aku rasa keknya aku beneran deh itu pas fesbud dan kamu nangis wkwkwk lucu tapi kaya owh wow selemah lembut itu ternyata Rifka. 
         </p>
-        <p class="leading-relaxed indent-8 mb-8 text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed mb-8 text-xl text-gray-700 handwriting text-justify">
           Mau bilang lagi aku beneran gada maksud apapun beneran aku awalnya cuman mau tau lebih rifka cuman mau sedikit lebih deket dengan rifka makanya aku bilang sebenernya aku juga sedikit kurang peduli gimana rifka ke aku, yang aku tekenin ke diriku sendiri itu ya gaboleh sampe rifka ngerasa risih atau ga nyaman. Tapi ternyata..
         </p>
-        <p class="leading-relaxed indent-8 mb-6 text-xl text-gray-700 handwriting">
-          Diawal padahal aku cuman suka doang tapi aku kaya banyak insecurenya dari semua hal yang kamu punya kaya aku ngerasa<span id="peek-trigger" class="px-1.5 py-0.5 rounded-md text-pink-600 font-bold cursor-pointer select-none transition-colors" title="Tahan untuk melihat bukti">out of my league</span> dan kaya aku rasa meskipun aku cuman suka tapi kaya gapantes aja, emang aneh sih si pemikir ini wkwkwk, tapi kaya makin kesini aku ngerasa gaguna insecure(padahal masih kadang) yaa ak jadi mikir kaya ill be better dibanding mikirin eum adalah aneh-aneh..
+        <p class="leading-relaxed mb-6 text-xl text-gray-700 handwriting text-justify">
+          Diawal padahal aku cuman suka doang tapi aku kaya banyak insecurenya dari semua hal yang kamu punya kaya aku ngerasa <span id="peek-trigger" class="inline px-1 py-0.5 rounded bg-pink-100 text-pink-600 font-bold cursor-pointer select-none active:bg-pink-200 transition-colors">out of my league</span> dan kaya aku rasa meskipun aku cuman suka tapi kaya gapantes aja, emang aneh sih si pemikir ini wkwkwk, tapi kaya makin kesini aku ngerasa gaguna insecure(padahal masih kadang) yaa ak jadi mikir kaya ill be better dibanding mikirin eum adalah aneh-aneh..
         </p>
-        <p class="leading-relaxed indent-8 mb-8 text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed mb-8 text-xl text-gray-700 handwriting text-justify">
           Tapi berjalannya waktu ternyata aku malah berbuat hal aneh padahal dengan aku cuman ngeliat dari akun-akun kamu itu aku rasa cukup, tapi wkwkwk mencet-mencet lah atau lupa matin profile views dan ternyata aku tiba-tiba di follow akun bodong wkwk aku beneran langsung nyari tau dan berharap itu beneran rifka ternyata beneran suer aku seneng banget tapi yaudah kaya lah kok gitu aja sihh pas tiba-tiba berhenti wkwkwk, terus aku mutusin buat follow kamu juga karna kaya nyoba kali yah kali aja di follback ternyata di follback seneng bgt ada kali aku loncat-loncat (too much gasih za) trus awalnya bingung karna pasti canggung tapi yauda coba modus aja kalik. 
         </p>
-        <p class="leading-relaxed indent-8 mb-6 text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed mb-6 text-xl text-gray-700 handwriting text-justify">
           Tapi ternyata kaya aku gabisa banget nyembunyiin ga jago dan malah confess secara halus? dan aku minta maaf juga misal diawal kayanya aku malah keliatan kaya ngasih mixed signals? makanya aku rasa kayanya gapapa deh confess dengan halus biar kamu ngerasa tenang dan yaudah ternyata udah kejadian.
         </p>
-        <p class="leading-relaxed indent-8 mb-8 text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed mb-8 text-xl text-gray-700 handwriting text-justify">
           Dan, yang ngga aku sangka ternyata kamu pun memiliki perasaan yang sama (?) wkwkwk aku beneran kagett dan aslinya ngga berharap padahal (halah kentut lu za emg denial bgt bocahnya) kaya direspon aja aku dah sangat bersyukur wkwkwk... makanya awalnya pun aku masih ga nyangka.
         </p>
-        <p class="leading-relaxed indent-8 mb-6 text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed mb-6 text-xl text-gray-700 handwriting text-justify">
           Makin kesini aku ngerasa sama-sama excited dan aku beneran seseneng itu lho, hari-hari aku jadi bener-bener kerasa beda bangett, aku diawal soalnya gamau terlalu percaya (maaf) karena aku kalau udah bersemangat kaya make hati banget makanya aku takut sakit ajah. makanya aku ngerasa secure banget ngobrol sama kamu aku ngerasa kaya ngga cuman seneng doang aku bisa cerita ke kamunya tapi semua hal aku bisa lakuin tapi aku masih gaenak kalau tiba-tiba aku malah ngeluapin emosi aku ngeluapin hal negatif aku ke kamu ya walaupun bukan ngarah ke kamu tapi aku tetep kaya yaallah kenapa ke rifka aku takutnya kamu ngelihat aku kaya gimana gitu.
         </p>
-        <p class="leading-relaxed indent-8 mb-8 text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed mb-8 text-xl text-gray-700 handwriting text-justify">
           Aku beneran seseneng itu tau kalau interaksi sama kamu di platform mana pun juga di real life dan kenapa aku lebih suka di tiktok karena aku ngerasa kamu disana kaya lebih lepas dan lebih lucu (?) di semuanya juga gitu sih tapi aku beneran takut kalau selain di tiktok gatau deh kenapa (?) kaya jujur ajaa takut kamu ga percaya, kalau aku kaya salting aku seneng aku excited aku sedih aku bener-bener di real life kaya gituu maksudnya ngga kubuat-buat cuman sekedar ketikan. Aku kaya berharap kamupun begitu wkwkw maksudnya aku bukan ngga percaya tapi malah justru aku percaya banget aku takut aja ternyata kamu ngga seexcited itu atau kaya bosen atau rasa excitednya pudar? kayaa padahal awalnya aku bodoamat yah tapi kenapa aku ngurusin hal begini maaf yah. Jadii kalau nanti dirasa begitu gapapaa kok bilang ajah karna aku rasa aku bakal sakit kalau tau kamu sebenernya nyembunyiin hal itu. Akupun bakal ngomong kok kalau sudah begitu tapi serius aku gapernah selama ini seneng bangettnya jadi aku terus berdoa supaya aku punya rasa gini terus.
         </p>
-        <p class="leading-relaxed indent-8 mb-8 text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed mb-8 text-xl text-gray-700 handwriting text-justify">
           Oiyah sama ini gatau yah kamu mikir begini atau ngga tapi aku kepikiran kamu mikir gini, soalnya aku pernah nanya mbafira soal friendlynya cowo itu gimana terus dia bener-bener ngasih aku pov dari cewe gimanah. Jadi aku mau ngasih tau aja aku ngga sefriendly yang kamu kira kok (loh sitau tuh) maksudku bagus sih friendly cuman aku masih tau batasan kok aku beneran ngerti gimana untuk ramah ke orang dan gimana aku interaksi ke kamu aduh gimana ya jelasinnya intinya aku tuh suka ngobrol sama kamu beda gitu perasaannya kalau ngobrol sama yang lain. Juga aku intens chatting sama kamu dan mbacinta atau mbafira doang, aku menganggap mbacinta dan mbafira adalah kakak perempuan yang amat sangat pengertian nan baik hati ya bukan mau menyingkirkan mas fatih tpi feelnya beda gitu dan gada romantisasi ke arah sana.. yaa jadi itusihh nahh karna aku dah klarif jadi nanti kalau ada yang menurut kamu janggal tanyain aja yaahhh... 
         </p>
-        <p class="leading-relaxed indent-8 mb-6 text-xl text-gray-700 handwriting">
+        <p class="leading-relaxed mb-6 text-xl text-gray-700 handwriting text-justify">
           OHH SAMA INI.. karna aku dah ngaku juga dan kamupun dah tau itu second akun tiktok aku dan kayanya udah liat repostannya yah? iyaa itu semua buat kamu kok ngga ada ke siapa-siapa, itu kaya curhat dan ada doa gituu sihh..
         </p>
         <p class="text-lg text-pink-400 mb-6 handwriting text-center">Suer kaya orang plenger ngetik ini</p>
       </div>
             
+      <!-- Footer -->
       <p class="text-pink-300 mt-12 mb-10 calligraphy text-lg reveal-on-scroll text-center">Made with ❤️ by tempegorenG</p>
     </div>
   </div>
 
+  <!-- POP-UP PEEK PREVIEW (HEADER DIPERBAIKI RESPONSIF, TIDAK NUMPUK) -->
   <div id="peek-preview" class="fixed inset-0 z-50 pointer-events-none hidden items-center justify-center p-4 bg-black/45 backdrop-blur-[2px] transition-opacity duration-200 opacity-0">
     <div class="bg-[#0f1419] border border-gray-700 text-white rounded-2xl p-3.5 shadow-2xl max-w-[280px] sm:max-w-[320px] w-full flex flex-col items-center gap-2 transform scale-90 transition-transform duration-200" id="peek-card">
       
-      <div class="w-full flex items-center justify-between text-[11px] font-sans text-gray-400 px-1 border-b border-gray-800 pb-1.5">
-        <span class="flex items-center gap-1"> alay sii tpi gapapa mw nunjukin aj😭</span>
-        <span class="text-pink-400 text-[10px]">lepas buat tutup</span>
+      <!-- Bagian Header Anti-Numpuk -->
+      <div class="w-full flex items-center justify-between gap-2 text-[11px] font-sans text-gray-400 px-1 border-b border-gray-800 pb-1.5">
+        <span class="truncate leading-none">alay sii tpi gapapa mw nunjukin aja mwehe</span>
+        <span class="text-pink-400 text-[10px] whitespace-nowrap shrink-0 font-medium">lepas buat tutup</span>
       </div>
 
+      <!-- File SS Tweet -->
       <img src="bukti-ovt.png" alt="Tweet out of my league" class="w-full rounded-lg object-contain">
 
+      <!-- File GIF Sedih -->
       <div class="w-full flex items-center justify-center pt-0.5">
         <img src="sedih.gif" alt="GIF Sedih" class="w-20 h-20 sm:w-24 sm:h-24 object-contain rounded-md" onerror="this.style.display='none'">
       </div>
