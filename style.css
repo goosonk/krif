@@ -70,6 +70,31 @@
   z-index: 60;
 }
 
+/* ANIMASI TAP-TO-HEART */
+@keyframes floatTapHeart {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate(calc(-50% + var(--driftX)), calc(-50% - 40px)) scale(1.2);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--driftX) * 1.5), calc(-50% - 85px)) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.tap-heart-particle {
+  position: fixed;
+  font-size: 1.3rem;
+  pointer-events: none;
+  user-select: none;
+  z-index: 9999;
+  animation: floatTapHeart 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 body.locked { 
   overflow: hidden; 
 }

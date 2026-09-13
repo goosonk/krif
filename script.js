@@ -152,22 +152,17 @@ seekSlider2.addEventListener('change', () => {
 
 // === EVENT TOMBOL LANJUT KE CHAPTER 2 (OUR STORY) ===
 btnNextStory.addEventListener('click', () => {
-  // 1. Matikan lagu HIVI
   pauseAudio(bgMusic1, iconPlay1, iconPause1);
 
-  // 2. Munculkan bagian Our Story
   storySection.classList.remove('hidden');
   storySection.classList.add('flex', 'fade-in-section');
 
-  // 3. Putar otomatis lagu LANY
   playAudio(bgMusic2, iconPlay2, iconPause2);
 
-  // 4. Scroll halus ke awal cerita
   setTimeout(() => {
     storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 100);
 
-  // 5. Ubah teks tombol (Font tetap besar, tegas, dan proporsional)
   btnNextStory.innerHTML = "<span class='text-xl sm:text-2xl handwriting font-bold leading-snug drop-shadow'>Selamat membaca ceritaku yaah maaf kalau panjang.. 🤍</span>";
   btnNextStory.classList.add('opacity-85', 'cursor-default');
   btnNextStory.disabled = true;
@@ -202,15 +197,52 @@ if (peekTrigger && peekPreview) {
     }, 200);
   };
 
-  // Interaksi sentuh di HP
   peekTrigger.addEventListener('touchstart', showPeek, { passive: false });
   window.addEventListener('touchend', hidePeek);
   window.addEventListener('touchcancel', hidePeek);
 
-  // Interaksi mouse di Laptop/Desktop
   peekTrigger.addEventListener('mousedown', showPeek);
   window.addEventListener('mouseup', hidePeek);
 }
+
+// === FITUR: TAP-TO-HEART EFFECT ===
+const tapHearts = ['💖', '✨', '🌸', '💕', '🤍'];
+
+function spawnHeart(x, y) {
+  const heart = document.createElement('div');
+  heart.className = 'tap-heart-particle';
+  heart.innerText = tapHearts[Math.floor(Math.random() * tapHearts.length)];
+  
+  // Posisi tepat di ujung jari / kursor
+  heart.style.left = `${x}px`;
+  heart.style.top = `${y}px`;
+  
+  // Variasi drift horizontal ke kiri/kanan sedikit
+  const driftX = (Math.random() - 0.5) * 40 + 'px';
+  heart.style.setProperty('--driftX', driftX);
+  
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 900);
+}
+
+// Handler sentuhan layar (HP)
+window.addEventListener('touchstart', (e) => {
+  // Hanya aktif setelah amplop dibuka & jangan bentrok saat hold preview
+  if (!isOpen) return;
+  if (e.target.closest('#peek-trigger') || e.target.closest('input[type="range"]') || e.target.closest('button')) return;
+  
+  const touch = e.touches[0];
+  if (touch) {
+    spawnHeart(touch.clientX, touch.clientY);
+  }
+}, { passive: true });
+
+// Handler klik mouse (Laptop/Desktop)
+window.addEventListener('click', (e) => {
+  if (!isOpen) return;
+  if (e.target.closest('#peek-trigger') || e.target.closest('input[type="range"]') || e.target.closest('button')) return;
+  spawnHeart(e.clientX, e.clientY);
+});
 
 // Efek Bunga Meledak Amplop
 function createFlowerBurst() {
@@ -257,7 +289,6 @@ envelope.addEventListener('click', function() {
   if (isOpen) return; 
   isOpen = true;
   
-  // Putar lagu 1 (HIVI) begitu amplop dibuka
   playAudio(bgMusic1, iconPlay1, iconPause1);
   
   const instruction = document.getElementById('instruction-text');
