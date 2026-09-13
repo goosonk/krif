@@ -168,10 +168,49 @@ btnNextStory.addEventListener('click', () => {
   }, 100);
 
   // 5. Ubah teks tombol (Font tetap besar, tegas, dan proporsional)
-  btnNextStory.innerHTML = "<span class='text-xl sm:text-2xl handwriting font-bold leading-snug drop-shadow'>Selamat membaca ceritaku yaah maaf kalau panjang.. </span>";
+  btnNextStory.innerHTML = "<span class='text-xl sm:text-2xl handwriting font-bold leading-snug drop-shadow'>Selamat membaca ceritaku yaah maaf kalau panjang.. 🤍</span>";
   btnNextStory.classList.add('opacity-85', 'cursor-default');
   btnNextStory.disabled = true;
 });
+
+// === LOGIKA TEKAN & TAHAN (PRESS AND HOLD) PEEK PREVIEW ===
+const peekTrigger = document.getElementById('peek-trigger');
+const peekPreview = document.getElementById('peek-preview');
+const peekCard = document.getElementById('peek-card');
+
+if (peekTrigger && peekPreview) {
+  const showPeek = (e) => {
+    if (e.cancelable) e.preventDefault();
+    peekPreview.classList.remove('hidden');
+    peekPreview.classList.add('flex');
+    requestAnimationFrame(() => {
+      peekPreview.classList.remove('opacity-0');
+      peekPreview.classList.add('opacity-100');
+      peekCard.classList.remove('scale-90');
+      peekCard.classList.add('scale-100');
+    });
+  };
+
+  const hidePeek = () => {
+    peekPreview.classList.remove('opacity-100');
+    peekPreview.classList.add('opacity-0');
+    peekCard.classList.remove('scale-100');
+    peekCard.classList.add('scale-90');
+    setTimeout(() => {
+      peekPreview.classList.remove('flex');
+      peekPreview.classList.add('hidden');
+    }, 200);
+  };
+
+  // Interaksi sentuh di HP
+  peekTrigger.addEventListener('touchstart', showPeek, { passive: false });
+  window.addEventListener('touchend', hidePeek);
+  window.addEventListener('touchcancel', hidePeek);
+
+  // Interaksi mouse di Laptop/Desktop
+  peekTrigger.addEventListener('mousedown', showPeek);
+  window.addEventListener('mouseup', hidePeek);
+}
 
 // Efek Bunga Meledak Amplop
 function createFlowerBurst() {
